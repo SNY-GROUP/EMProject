@@ -21,7 +21,8 @@ namespace ComLib
 		override public void OnSetConnectionInfo(ref string fileFullName,ref string tableName) 
 		{
 			fileFullName = string.Format("{0}/{1}", Application.dataPath, script.fullFilePath) ;
-			tableName = script.tableName;	// "DataFormula"
+			//tableName = script.tableName;	// "DataFormula"
+			tableName = "Data";
 		}
 
 		override public bool OnFetchData(DataTable dataTable,int rowCount) 
