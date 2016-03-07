@@ -22,7 +22,7 @@ namespace ComLib
 		{
 			fileFullName = string.Format("{0}/{1}", Application.dataPath, script.fullFilePath) ;
 			//tableName = script.tableName;	// "DataFormula"
-			tableName = "Data";
+			tableName = "Struct";
 		}
 
 		override public bool OnFetchData(DataTable dataTable,int rowCount) 

@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &15426449
 GameObject:
@@ -1548,6 +1549,10 @@ Prefab:
     - target: {fileID: 400024, guid: ee54cc9d00b773f4fac6518199ba6b4c, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: ee54cc9d00b773f4fac6518199ba6b4c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.48191023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee54cc9d00b773f4fac6518199ba6b4c, type: 2}
