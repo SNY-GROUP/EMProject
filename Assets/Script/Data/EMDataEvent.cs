@@ -4,17 +4,16 @@ using System.Collections.Generic;
 using System;
 
 [Serializable]
-public class EMDataScheduleStruct
+public class EMDataEventStruct
 {
 	public int	ID	;
-	public int	CategoryType	;
+	public int	EventType	;
 	public int	LevelType	;
-	public int	Schedule_NameID	;
-	public int	Schedule_InfoID	;
-	public int	UseType	;
-	public int	UseVaule	;
-	public int	OpenType	;
-	public int	OpenValue	;
+	public int	EvenTName	;
+	public int	EventInfo	;
+	public int	EventBuyInfo	;
+	public int	SaleMin	;
+	public int	SaleMax	;
 	public int	GainGold	;
 	public int	GainHp	;
 	public int	GainPatience	;
@@ -25,27 +24,27 @@ public class EMDataScheduleStruct
 	public int	GainJop	;
 	public int	GainPrivate	;
 	public int	GainRest	;
+	public int	probabilityGroupID	;
 
-	public EMDataScheduleStruct ()
+	public EMDataEventStruct ()
 	{}
 
 
-	public EMDataScheduleStruct (EMDataScheduleStruct orgData)
+	public EMDataEventStruct (EMDataEventStruct orgData)
 	{
 		Copy(orgData) ;
 	}
 
-	public void Copy (EMDataScheduleStruct orgData)
+	public void Copy (EMDataEventStruct orgData)
 	{
 		ID = orgData.ID ;
-		CategoryType = orgData.CategoryType ;
+		EventType = orgData.EventType ;
 		LevelType = orgData.LevelType ;
-		Schedule_NameID = orgData.Schedule_NameID ;
-		Schedule_InfoID = orgData.Schedule_InfoID ;
-		UseType = orgData.UseType ;
-		UseVaule = orgData.UseVaule ;
-		OpenType = orgData.OpenType ;
-		OpenValue = orgData.OpenValue ;
+		EvenTName = orgData.EvenTName ;
+		EventInfo = orgData.EventInfo ;
+		EventBuyInfo = orgData.EventBuyInfo ;
+		SaleMin = orgData.SaleMin ;
+		SaleMax = orgData.SaleMax ;
 		GainGold = orgData.GainGold ;
 		GainHp = orgData.GainHp ;
 		GainPatience = orgData.GainPatience ;
@@ -56,6 +55,7 @@ public class EMDataScheduleStruct
 		GainJop = orgData.GainJop ;
 		GainPrivate = orgData.GainPrivate ;
 		GainRest = orgData.GainRest ;
+		probabilityGroupID = orgData.probabilityGroupID ;
 	}
 
 	public void SetData (int row, params string[] metaData)
@@ -63,22 +63,20 @@ public class EMDataScheduleStruct
 		int i = 0;
 		if (!int.TryParse (metaData [i++], out ID))	{
 		Debug.LogError (string.Format("[Error] row : {0}, ID", row)); return; }
-		if (!int.TryParse (metaData [i++], out CategoryType))	{
-		Debug.LogError (string.Format("[Error] row : {0}, CategoryType", row)); return; }
+		if (!int.TryParse (metaData [i++], out EventType))	{
+		Debug.LogError (string.Format("[Error] row : {0}, EventType", row)); return; }
 		if (!int.TryParse (metaData [i++], out LevelType))	{
 		Debug.LogError (string.Format("[Error] row : {0}, LevelType", row)); return; }
-		if (!int.TryParse (metaData [i++], out Schedule_NameID))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Schedule_NameID", row)); return; }
-		if (!int.TryParse (metaData [i++], out Schedule_InfoID))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Schedule_InfoID", row)); return; }
-		if (!int.TryParse (metaData [i++], out UseType))	{
-		Debug.LogError (string.Format("[Error] row : {0}, UseType", row)); return; }
-		if (!int.TryParse (metaData [i++], out UseVaule))	{
-		Debug.LogError (string.Format("[Error] row : {0}, UseVaule", row)); return; }
-		if (!int.TryParse (metaData [i++], out OpenType))	{
-		Debug.LogError (string.Format("[Error] row : {0}, OpenType", row)); return; }
-		if (!int.TryParse (metaData [i++], out OpenValue))	{
-		Debug.LogError (string.Format("[Error] row : {0}, OpenValue", row)); return; }
+		if (!int.TryParse (metaData [i++], out EvenTName))	{
+		Debug.LogError (string.Format("[Error] row : {0}, EvenTName", row)); return; }
+		if (!int.TryParse (metaData [i++], out EventInfo))	{
+		Debug.LogError (string.Format("[Error] row : {0}, EventInfo", row)); return; }
+		if (!int.TryParse (metaData [i++], out EventBuyInfo))	{
+		Debug.LogError (string.Format("[Error] row : {0}, EventBuyInfo", row)); return; }
+		if (!int.TryParse (metaData [i++], out SaleMin))	{
+		Debug.LogError (string.Format("[Error] row : {0}, SaleMin", row)); return; }
+		if (!int.TryParse (metaData [i++], out SaleMax))	{
+		Debug.LogError (string.Format("[Error] row : {0}, SaleMax", row)); return; }
 		if (!int.TryParse (metaData [i++], out GainGold))	{
 		Debug.LogError (string.Format("[Error] row : {0}, GainGold", row)); return; }
 		if (!int.TryParse (metaData [i++], out GainHp))	{
@@ -99,10 +97,12 @@ public class EMDataScheduleStruct
 		Debug.LogError (string.Format("[Error] row : {0}, GainPrivate", row)); return; }
 		if (!int.TryParse (metaData [i++], out GainRest))	{
 		Debug.LogError (string.Format("[Error] row : {0}, GainRest", row)); return; }
+		if (!int.TryParse (metaData [i++], out probabilityGroupID))	{
+		Debug.LogError (string.Format("[Error] row : {0}, probabilityGroupID", row)); return; }
 	}
 }
 
-public class EMDataSchedule : MonoBehaviour
+public class EMDataEvent : MonoBehaviour
 {
-	public List<EMDataScheduleStruct> prefabData = new List<EMDataScheduleStruct>();
+	public List<EMDataEventStruct> prefabData = new List<EMDataEventStruct>();
 }

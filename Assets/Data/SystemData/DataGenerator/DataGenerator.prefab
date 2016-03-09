@@ -13,6 +13,8 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11453130}
+  - 114: {fileID: 11488004}
   m_Layer: 0
   m_Name: DataGenerator
   m_TagString: Untagged
@@ -43,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFilePath: Data/SystemData/_Excel/Schedule.xls
+  fullFilePath: Data/SystemData/_Excel/Schedule Table.xls
   tableName: EMDataSchedule
   targetPath: Script/Data
 --- !u!114 &11400002
@@ -57,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFilePath: Data/SystemData/_Excel/State.xls
+  fullFilePath: Data/SystemData/_Excel/State Table.xls
   tableName: EMDataState
   targetPath: Script/Data
 --- !u!114 &11400004
@@ -71,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFilePath: Data/SystemData/_Excel/University.xls
+  fullFilePath: Data/SystemData/_Excel/University Table.xls
   tableName: EMDataUniversity
   targetPath: Script/Data
 --- !u!114 &11400006
@@ -85,8 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFilePath: Data/SystemData/_Excel/Advertisement.xls
-  tableName: EMDataAdvertisement
+  fullFilePath: Data/SystemData/_Excel/Level Table.xls
+  tableName: EMDataLevel
   targetPath: Script/Data
 --- !u!114 &11400008
 MonoBehaviour:
@@ -99,8 +101,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFilePath: "Data/SystemData/_Excel/\uAD11\uACE0\uC774\uBCA4\uD2B8\uC870\uAC74.xls"
-  tableName: EMDataAdCondition
+  fullFilePath: Data/SystemData/_Excel/HomeShopping Table.xls
+  tableName: EMDataAdvertisement
+  targetPath: Script/Data
+--- !u!114 &11453130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullFilePath: Data/SystemData/_Excel/Event Table.xls
+  tableName: EMDataEvent
+  targetPath: Script/Data
+--- !u!114 &11488004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f04b30aaf3d3d743b4656cbe17201ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullFilePath: Data/SystemData/_Excel/String Table.xls
+  tableName: EMDataString
   targetPath: Script/Data
 --- !u!1001 &100100000
 Prefab:
