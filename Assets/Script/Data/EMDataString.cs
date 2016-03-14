@@ -25,17 +25,6 @@ public class EMDataStringStruct
 		Text = orgData.Text ;
 		Size = orgData.Size ;
 	}
-
-	public void SetData (int row, params string[] metaData)
-	{
-		int i = 0;
-		if (!int.TryParse (metaData [i++], out ID))	{
-		Debug.LogError (string.Format("[Error] row : {0}, ID", row)); return; }
-		Text = metaData[i++] ;
-
-		if (!int.TryParse (metaData [i++], out Size))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Size", row)); return; }
-	}
 }
 
 public class EMDataString : MonoBehaviour

@@ -35,10 +35,12 @@ namespace ComLib
 				if( string.IsNullOrEmpty(dataTable.Columns[i].ColumnName) )
 					continue;
 				
-				data = string.Format("{0}\n\tpublic {1}\t{2}\t{3}", 
-				                     data, dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString(), dataTable.Rows[1][dataTable.Columns[i].ColumnName].ToString(),";");
+				data = string.Format("{0}\n\tpublic {1}\t{2}\t;", 
+				                     data, 
+				                     dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString(), 
+				                     dataTable.Columns[i].ColumnName);
 
-				ColumnArray[i] = dataTable.Rows[1][dataTable.Columns[i].ColumnName].ToString();
+				ColumnArray[i] = dataTable.Columns[i].ColumnName;
 			}
 
 			// creator1
@@ -61,30 +63,6 @@ namespace ComLib
 
 			data = string.Format ("{0}\t{1}", data, "}");
 
-			// setdata
-			data = string.Format ("{0}\n\n\tpublic void SetData (int row, params string[] metaData)\n\t{1}\n", data, "{");
-			data = string.Format ("{0}\t\tint i = 0;", data);
-
-			for(int i = 0; i < ColumnArray.Length; i++)
-			{
-				if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("string"))
-				{
-					data = string.Format ("{0}\n\t\t{1} = metaData[i++] ;\n", data, ColumnArray[i]);
-				}
-				else if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("int"))
-				{
-					data = string.Format ("{0}\n\t\tif (!int.TryParse (metaData [i++], out {1}))\t{2}\n", data, ColumnArray[i], "{");
-					data = string.Format ("{0}\t\tDebug.LogError (string.Format(\"[Error] row : {1}, {2}\", row)); return; {3}", data, "{0}", ColumnArray[i], "}");
-				}
-				else if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("long"))
-				{
-					data = string.Format ("{0}\n\t\tif (!long.TryParse (metaData [i++], out {1}))\t{2}\n", data, ColumnArray[i], "{");
-					data = string.Format ("{0}\t\tDebug.LogError (string.Format(\"[Error] row : {1}, {2}\", row)); return; {3}", data, "{0}", ColumnArray[i], "}");
-				}
-			}
-			
-			data = string.Format ("{0}\n\t{1}", data, "}");
-
 			// end
 			data = string.Format ("{0}\n{1}", data, "}");
 
@@ -101,7 +79,7 @@ namespace ComLib
 			// editor
 			fullPath = string.Format ("{0}/{1}/Editor/EODBC{2}.cs", Application.dataPath, script.targetPath, script.tableName);
 
-			MakeEditorScript (fullPath);
+			MakeEditorScript (fullPath, dataTable, ColumnArray);
 			
 			return true ;
 		}
@@ -114,7 +92,7 @@ namespace ComLib
 		{
 		}
 
-		private void MakeEditorScript ( string fullPath )
+		private void MakeEditorScript ( string fullPath, DataTable dataTable, string[] ColumnArray )
 		{
 			string data = string.Format ("using UnityEngine;\n" +
 			                             "using UnityEditor;\n" +
@@ -144,14 +122,40 @@ namespace ComLib
 			data = string.Format ("{0}\n\t\t\tList<string> rowString = new List<string>();", data);
 			data = string.Format ("{0}\n\t\t\tfor(int j = 0; j < dataTable.Columns.Count; j++) {1}", data, "{");
 			data = string.Format ("{0}\n\t\t\t\trowString.Add(dataTable.Rows[i][dataTable.Columns[j].ColumnName].ToString()); {1}", data, "}");
-			data = string.Format ("{0}\n\t\t\t{1}Struct data = new {1}Struct();", data, script.tableName);	
-			data = string.Format ("{0}\n\t\t\tdata.SetData(i, rowString.ToArray());", data);
+			data = string.Format ("{0}\n\t\t\t{1}Struct data = SetData(i, rowString.ToArray());", data, script.tableName);	
 			data = string.Format ("{0}\n\t\t\tscript.prefabData.Add(data); {1}", data, "}");
 					
 			data = string.Format ("{0}\n\t\treturn true;\n\t{1}", data, "}");
 
 			data = string.Format ("{0}\n\toverride public void OnAddFieldInfo (ODBCDataSave saveData) {1}", data, "{}");
 			data = string.Format ("{0}\n\toverride public void OnAddSaveData (ODBCDataSave saveData) {1}", data, "{}");
+
+			// setdata
+			data = string.Format ("{0}\n\n\tprivate {1}Struct SetData (int row, params string[] metaData)\n\t{2}\n", data, script.tableName, "{");
+			data = string.Format ("{0}\t\tint i = 0;", data);
+			data = string.Format ("{0}\t\t{1}Struct data = new {1}Struct();", data, script.tableName);
+			
+			for(int i = 0; i < ColumnArray.Length; i++)
+			{
+				if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("string"))
+				{
+					data = string.Format ("{0}\n\t\tdata.{1} = metaData[i++] ;\n", data, ColumnArray[i]);
+				}
+				else if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("int"))
+				{
+					data = string.Format ("{0}\n\t\tif (!int.TryParse (metaData [i++], out data.{1}))\t{2}\n", data, ColumnArray[i], "{");
+					data = string.Format ("{0}\t\tDebug.LogError (string.Format(\"[Error] row : {1}, {2}\", row)); return null; {3}", data, "{0}", ColumnArray[i], "}");
+				}
+				else if(dataTable.Rows[0][dataTable.Columns[i].ColumnName].ToString().Equals("long"))
+				{
+					data = string.Format ("{0}\n\t\tif (!long.TryParse (metaData [i++], out data.{1}))\t{2}\n", data, ColumnArray[i], "{");
+					data = string.Format ("{0}\t\tDebug.LogError (string.Format(\"[Error] row : {1}, {2}\", row)); return null; {3}", data, "{0}", ColumnArray[i], "}");
+				}
+			}
+
+			data = string.Format ("{0}\n\t\treturn data;", data);
+			
+			data = string.Format ("{0}\n\t{1}", data, "}");
 
 			data = string.Format ("{0}\n{1}", data, "}");
 					

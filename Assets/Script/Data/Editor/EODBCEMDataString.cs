@@ -21,11 +21,22 @@ public class EODBCEMDataString : ODBCEditControlBase
 			List<string> rowString = new List<string>();
 			for(int j = 0; j < dataTable.Columns.Count; j++) {
 				rowString.Add(dataTable.Rows[i][dataTable.Columns[j].ColumnName].ToString()); }
-			EMDataStringStruct data = new EMDataStringStruct();
-			data.SetData(i, rowString.ToArray());
+			EMDataStringStruct data = SetData(i, rowString.ToArray());
 			script.prefabData.Add(data); }
 		return true;
 	}
 	override public void OnAddFieldInfo (ODBCDataSave saveData) {}
 	override public void OnAddSaveData (ODBCDataSave saveData) {}
+
+	private EMDataStringStruct SetData (int row, params string[] metaData)
+	{
+		int i = 0;		EMDataStringStruct data = new EMDataStringStruct();
+		if (!int.TryParse (metaData [i++], out data.ID))	{
+		Debug.LogError (string.Format("[Error] row : {0}, ID", row)); return null; }
+		data.Text = metaData[i++] ;
+
+		if (!int.TryParse (metaData [i++], out data.Size))	{
+		Debug.LogError (string.Format("[Error] row : {0}, Size", row)); return null; }
+		return data;
+	}
 }

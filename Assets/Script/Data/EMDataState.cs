@@ -41,33 +41,6 @@ public class EMDataStateStruct
 		Gold = orgData.Gold ;
 		Luck = orgData.Luck ;
 	}
-
-	public void SetData (int row, params string[] metaData)
-	{
-		int i = 0;
-		if (!int.TryParse (metaData [i++], out HP))	{
-		Debug.LogError (string.Format("[Error] row : {0}, HP", row)); return; }
-		if (!int.TryParse (metaData [i++], out Patience))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Patience", row)); return; }
-		if (!int.TryParse (metaData [i++], out Math))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Math", row)); return; }
-		if (!int.TryParse (metaData [i++], out Glanguage))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Glanguage", row)); return; }
-		if (!int.TryParse (metaData [i++], out Language))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Language", row)); return; }
-		if (!int.TryParse (metaData [i++], out Common))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Common", row)); return; }
-		if (!int.TryParse (metaData [i++], out Jop))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Jop", row)); return; }
-		if (!int.TryParse (metaData [i++], out Private))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Private", row)); return; }
-		if (!int.TryParse (metaData [i++], out Rest))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Rest", row)); return; }
-		if (!long.TryParse (metaData [i++], out Gold))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Gold", row)); return; }
-		if (!int.TryParse (metaData [i++], out Luck))	{
-		Debug.LogError (string.Format("[Error] row : {0}, Luck", row)); return; }
-	}
 }
 
 public class EMDataState : MonoBehaviour
