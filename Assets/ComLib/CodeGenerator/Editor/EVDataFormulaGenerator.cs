@@ -118,7 +118,7 @@ namespace ComLib
 			data = string.Format ("{0}\n\toverride public bool OnFetchData(DataTable dataTable,int rowCount) {1}", data, "{");
 
 			data = string.Format ("{0}\n\t\tscript.prefabData.Clear ();", data);
-			data = string.Format ("{0}\n\t\tfor(int i = 0; i < dataTable.Rows.Count; i++) {1}", data, "{");
+			data = string.Format ("{0}\n\t\tfor(int i = 0; i < rowCount; i++) {1}", data, "{");
 			data = string.Format ("{0}\n\t\t\tList<string> rowString = new List<string>();", data);
 			data = string.Format ("{0}\n\t\t\tfor(int j = 0; j < dataTable.Columns.Count; j++) {1}", data, "{");
 			data = string.Format ("{0}\n\t\t\t\trowString.Add(dataTable.Rows[i][dataTable.Columns[j].ColumnName].ToString()); {1}", data, "}");

@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &183944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483944}
+  - 114: {fileID: 11418980}
+  m_Layer: 0
+  m_Name: EMDataSchedule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &483944
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.00289399992, y: .00289399992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11418980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156cec7a5df267740bd2b651263db2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabData:
+  - ID: 100001
+    CategoryType: 0
+    LevelType: 0
+    Schedule_NameID: 100001
+    Schedule_InfoID: 104001
+    UseType: 0
+    UseVaule: 4000
+    OpenType: 0
+    OpenValue: 10
+    GainGold: 0
+    GainHp: 10
+    GainPatience: 10
+    GainMath: 10
+    Gain_GLanguage: 10
+    Gain_Language: 10
+    GainCommon: -10
+    GainJop: 10
+    GainPrivate: 10
+    GainRest: 10
+  - ID: 100002
+    CategoryType: 1
+    LevelType: 1
+    Schedule_NameID: 100002
+    Schedule_InfoID: 104002
+    UseType: 0
+    UseVaule: 4000
+    OpenType: 1
+    OpenValue: 20
+    GainGold: 50000
+    GainHp: 50
+    GainPatience: 50
+    GainMath: 50
+    Gain_GLanguage: -50
+    Gain_Language: 50
+    GainCommon: 50
+    GainJop: 50
+    GainPrivate: -50
+    GainRest: 50
+  - ID: 100003
+    CategoryType: 2
+    LevelType: 2
+    Schedule_NameID: 100003
+    Schedule_InfoID: 104003
+    UseType: 1
+    UseVaule: 50
+    OpenType: 2
+    OpenValue: 30
+    GainGold: 0
+    GainHp: 100
+    GainPatience: 100
+    GainMath: -100
+    Gain_GLanguage: -100
+    Gain_Language: 100
+    GainCommon: 100
+    GainJop: -100
+    GainPrivate: 100
+    GainRest: 100
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 183944}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

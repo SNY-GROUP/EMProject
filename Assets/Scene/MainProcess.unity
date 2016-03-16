@@ -1003,6 +1003,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 755977420}
   - 114: {fileID: 755977421}
+  - 114: {fileID: 755977422}
   m_Layer: 0
   m_Name: EMMain
   m_TagString: Untagged
@@ -1033,6 +1034,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f168edc19dd7c21439a5d385e9248e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &755977422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755977419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a817594ada123ee46aef5bd84d6a651c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Advertisement: {fileID: 11457786, guid: 1a60751847a495240a350007e9e3a16a, type: 2}
+  m_Event: {fileID: 11453934, guid: 06d62ecc12027b84eb06b2f9cbfe673c, type: 2}
+  m_Level: {fileID: 11424776, guid: 02dbc2318976e194eb7f047cc6a03f80, type: 2}
+  m_Schedule: {fileID: 11418980, guid: b42eddeff8aa71343b259f751af5ff36, type: 2}
+  m_University: {fileID: 11400654, guid: d5258e78573d4d8469042adadfa9901f, type: 2}
+  m_Text: {fileID: 11457454, guid: 58b19fdc16a31a7438908c4591699af7, type: 2}
 --- !u!1 &854936149
 GameObject:
   m_ObjectHideFlags: 0

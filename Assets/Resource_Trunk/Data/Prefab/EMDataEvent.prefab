@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &183944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483944}
+  - 114: {fileID: 11453934}
+  m_Layer: 0
+  m_Name: EMDataEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &483944
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.00289399992, y: .00289399992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11453934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69255addbdab80345818499a0f79d0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabData:
+  - ID: 100001
+    EventType: 0
+    LevelType: 0
+    EvenTName: 100001
+    EventInfo: 10000001
+    EventBuyInfo: 10010001
+    SaleMin: 10
+    SaleMax: 50
+    GainGold: 1000
+    GainHp: 5
+    GainPatience: 5
+    GainMath: 5
+    Gain_GLanguage: 5
+    Gain_Language: 5
+    GainCommon: 5
+    GainJop: 5
+    GainPrivate: 5
+    GainRest: 5
+    probabilityGroupID: 5
+  - ID: 100002
+    EventType: 1
+    LevelType: 0
+    EvenTName: 100002
+    EventInfo: 10000002
+    EventBuyInfo: 10010002
+    SaleMin: 20
+    SaleMax: 60
+    GainGold: 2000
+    GainHp: 5
+    GainPatience: 5
+    GainMath: 5
+    Gain_GLanguage: 5
+    Gain_Language: 5
+    GainCommon: 5
+    GainJop: 5
+    GainPrivate: 5
+    GainRest: 5
+    probabilityGroupID: 5
+  - ID: 100003
+    EventType: 2
+    LevelType: 1
+    EvenTName: 100003
+    EventInfo: 10000003
+    EventBuyInfo: 10010003
+    SaleMin: 30
+    SaleMax: 70
+    GainGold: 3000
+    GainHp: 5
+    GainPatience: 5
+    GainMath: 5
+    Gain_GLanguage: 5
+    Gain_Language: 5
+    GainCommon: 5
+    GainJop: 5
+    GainPrivate: 5
+    GainRest: 5
+    probabilityGroupID: 5
+  - ID: 100004
+    EventType: 3
+    LevelType: 2
+    EvenTName: 100004
+    EventInfo: 10000004
+    EventBuyInfo: 10010004
+    SaleMin: 40
+    SaleMax: 80
+    GainGold: 4000
+    GainHp: 5
+    GainPatience: 5
+    GainMath: 5
+    Gain_GLanguage: 5
+    Gain_Language: 5
+    GainCommon: 5
+    GainJop: 5
+    GainPrivate: 5
+    GainRest: 5
+    probabilityGroupID: 5
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 183944}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

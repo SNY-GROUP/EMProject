@@ -17,7 +17,7 @@ public class EODBCEMDataUniversity : ODBCEditControlBase
 		tableName = "Data"; }
 	override public bool OnFetchData(DataTable dataTable,int rowCount) {
 		script.prefabData.Clear ();
-		for(int i = 0; i < dataTable.Rows.Count; i++) {
+		for(int i = 0; i < rowCount; i++) {
 			List<string> rowString = new List<string>();
 			for(int j = 0; j < dataTable.Columns.Count; j++) {
 				rowString.Add(dataTable.Rows[i][dataTable.Columns[j].ColumnName].ToString()); }
