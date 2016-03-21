@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11453130}
   - 114: {fileID: 11488004}
   m_Layer: 0
-  m_Name: DataGenerator
+  m_Name: PrefabGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
