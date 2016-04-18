@@ -9,6 +9,8 @@ namespace Define
 		SAMPLE,
 		START,
 		SIMULATION,
+		TITLE,
+		INTRO,
 	}
 
 	public enum EMResultType

@@ -49,6 +49,7 @@ public class EMGameManager : Singleton<EMGameManager>
 		m_ProcessDic.Add ((int)Define.EMGameProcess.SAMPLE, new EMGameProcessSample ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.SIMULATION, new EMGameProcessSimulation ());
+		m_ProcessDic.Add ((int)Define.EMGameProcess.TITLE, new EMGameProcessTitle ());
 	}
 
 	private void SetSampleProcess ()
