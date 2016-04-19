@@ -2,20 +2,17 @@
 using System.Collections;
 using ComLib;
 
-public class EMGameProcessStart : ComFSMEntity<EMDataMgr> 
+public class EMGameProcessIntro : ComFSMEntity<EMDataMgr> 
 {
 	public override bool OnAwake (EMDataMgr p_Owner)
 	{
-		Debug.Log ("[EMGameProcessStart] OnAwake");
+		Debug.Log ("[EMGameProcessIntro] OnAwake");
 		return true;
 	}
 
 	public override bool OnEnter (EMDataMgr p_Owner)
 	{
-		Debug.Log ("[EMGameProcessStart] OnEnter");
-
-		EMGameManager.Instance.ChangeProcess (Define.EMGameProcess.TITLE);
-
+		Debug.Log ("[EMGameProcessIntro] OnEnter");
 		return true;
 	}
 
@@ -26,7 +23,7 @@ public class EMGameProcessStart : ComFSMEntity<EMDataMgr>
 
 	public override bool OnExit (EMDataMgr p_Owner)
 	{
-		Debug.Log ("[EMGameProcessStart] OnExit");
+		Debug.Log ("[EMGameProcessIntro] OnExit");
 		return true;
 	}
 

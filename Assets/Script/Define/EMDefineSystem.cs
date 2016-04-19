@@ -28,10 +28,4 @@ namespace Define
 		JOB,
 		VACATION,
 	}
-
-	public enum EMUIType
-	{
-		NULL,
-		SIMULATION,
-	}
 }

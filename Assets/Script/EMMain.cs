@@ -2,8 +2,8 @@
 using System.Collections;
 using Define;
 
-public class EMMain : MonoBehaviour {
-
+public class EMMain : MonoBehaviour 
+{
 	// Use this for initialization
 	void Awake () 
 	{

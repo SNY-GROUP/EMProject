@@ -50,6 +50,7 @@ public class EMGameManager : Singleton<EMGameManager>
 		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.SIMULATION, new EMGameProcessSimulation ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.TITLE, new EMGameProcessTitle ());
+		m_ProcessDic.Add ((int)Define.EMGameProcess.INTRO, new EMGameProcessIntro ());
 	}
 
 	private void SetSampleProcess ()
@@ -76,7 +77,10 @@ public class EMGameManager : Singleton<EMGameManager>
 		}
 		m_CurProcess = m_ProcessDic [(int)m_DataMgr.SetProcess(p_Process)];
 
+		EMUIManager.root.OnResetAll();
+
 		m_CurProcess.OnEnter (m_DataMgr);
+		EMUIManager.root.Show (GetCurProcess());
 	}
 
 	public void OnDestroy ()

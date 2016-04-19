@@ -21,9 +21,10 @@ public class EMGameProcessSample : ComFSMEntity<EMDataMgr>
 		return true;
 	}
 
-	public override void OnExit (EMDataMgr p_Owner)
+	public override bool OnExit (EMDataMgr p_Owner)
 	{
 		Debug.Log ("[EMGameProcessSample] OnExit");
+		return true;
 	}
 
 	public override void OnGUI (EMDataMgr p_Owner)

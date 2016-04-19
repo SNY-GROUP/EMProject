@@ -22,7 +22,7 @@ public class EMGameProcessSimulation : ComFSMEntity<EMDataMgr>
 	{
 		Debug.Log ("[EMGameProcessSimulation] OnEnter");
 
-		EMUIManager.root.SetActive (Define.EMUIType.SIMULATION, true);
+		EMUIManager.root.SetActive (Define.EMGameProcess.SIMULATION, true);
 		EMSchedulerMgr.Instance.StartSimulation ();
 
 		return true;
@@ -35,13 +35,14 @@ public class EMGameProcessSimulation : ComFSMEntity<EMDataMgr>
 		return true;
 	}
 
-	public override void OnExit (EMDataMgr p_Owner)
+	public override bool OnExit (EMDataMgr p_Owner)
 	{
 		Debug.Log ("[EMGameProcessSimulation] OnExit");
 
-		EMUIManager.root.OnReset (Define.EMUIType.SIMULATION);
+		EMUIManager.root.OnReset (Define.EMGameProcess.SIMULATION);
 
-		EMUIManager.root.SetActive (Define.EMUIType.SIMULATION, false);
+		EMUIManager.root.SetActive (Define.EMGameProcess.SIMULATION, false);
+		return true;
 	}
 
 	public override void OnGUI (EMDataMgr p_Owner)

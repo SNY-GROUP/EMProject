@@ -31,7 +31,7 @@ public class EMUIManager : MonoBehaviour
 			{
 				uiEntity.OnInit();
 
-				if(uiEntity.GetUIType() == (int)EMUIType.NULL)
+				if(uiEntity.GetUIType() == (int)EMGameProcess.NULL)
 					continue;
 
 				if(m_UIEntityDic.ContainsKey(uiEntity.GetUIType()))
@@ -42,7 +42,7 @@ public class EMUIManager : MonoBehaviour
 		}
 	}
 
-	public EMUIEntity GetUIEntity ( EMUIType p_UIType )
+	public EMUIEntity GetUIEntity ( EMGameProcess p_UIType )
 	{
 		if(m_UIEntityDic.ContainsKey((int)p_UIType))
 		{
@@ -51,7 +51,7 @@ public class EMUIManager : MonoBehaviour
 		return null;
 	}
 
-	public void SetActive ( EMUIType p_UIType, bool p_IsActive )
+	public void SetActive ( EMGameProcess p_UIType, bool p_IsActive )
 	{
 		EMUIEntity uiEntity = GetUIEntity (p_UIType);
 		if(uiEntity != null)
@@ -60,12 +60,32 @@ public class EMUIManager : MonoBehaviour
 		}
 	}
 
-	public void OnReset ( EMUIType p_UIType )
+	public void Show ( EMGameProcess p_UIType )
+	{
+		EMUIEntity uiEntity = GetUIEntity (p_UIType);
+		if(uiEntity != null)
+		{
+			uiEntity.SetActive(true);
+		}
+	}
+
+	public void OnReset ( EMGameProcess p_UIType )
 	{
 		EMUIEntity uiEntity = GetUIEntity (p_UIType);
 		if(uiEntity != null)
 		{
 			uiEntity.OnReset();
+		}
+	}
+
+	public void OnResetAll ()
+	{
+		foreach(EMUIEntity uiEntity in m_UIEntity)
+		{
+			if(uiEntity != null)
+			{
+				uiEntity.OnReset();
+			}
 		}
 	}
 }
