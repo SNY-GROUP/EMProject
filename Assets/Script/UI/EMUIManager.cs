@@ -78,6 +78,18 @@ public class EMUIManager : MonoBehaviour
 		}
 	}
 
+	public void OnResetExcept ( EMGameProcess p_UIType )
+	{
+		foreach(EMUIEntity uiEntity in m_UIEntity)
+		{
+			if(uiEntity != null)
+			{
+				if(uiEntity.Equals(p_UIType) == false)
+					uiEntity.OnReset();
+			}
+		}
+	}
+
 	public void OnResetAll ()
 	{
 		foreach(EMUIEntity uiEntity in m_UIEntity)

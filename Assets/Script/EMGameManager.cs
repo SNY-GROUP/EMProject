@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ComLib;
+using Define;
 
 public class EMGameManager : Singleton<EMGameManager>
 {
@@ -9,13 +10,22 @@ public class EMGameManager : Singleton<EMGameManager>
 	private Dictionary<int, ComFSMEntity<EMDataMgr>> m_ProcessDic;
 	private ComFSMEntity<EMDataMgr> m_CurProcess = null;
 
-	public Define.EMGameProcess GetCurProcess ()
+	public EMGameProcess GetCurProcess ()
 	{
 		if(m_DataMgr != null)
 		{
 			return m_DataMgr.GetProcess();
 		}
-		return Define.EMGameProcess.NULL;
+		return EMGameProcess.NULL;
+	}
+
+	private bool Equals ( EMGameProcess p_Process )
+	{
+		Debug.Log (string.Format("Equals? {0}, {1}", GetCurProcess () ,p_Process));
+		if (GetCurProcess () == p_Process)
+			return true;
+
+		return false;
 	}
 
 	public bool OnInit ()
@@ -46,25 +56,36 @@ public class EMGameManager : Singleton<EMGameManager>
 			m_ProcessDic = new Dictionary<int, ComFSMEntity<EMDataMgr>>();
 		}
 
-		m_ProcessDic.Add ((int)Define.EMGameProcess.SAMPLE, new EMGameProcessSample ());
-		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
-		m_ProcessDic.Add ((int)Define.EMGameProcess.SIMULATION, new EMGameProcessSimulation ());
-		m_ProcessDic.Add ((int)Define.EMGameProcess.TITLE, new EMGameProcessTitle ());
-		m_ProcessDic.Add ((int)Define.EMGameProcess.INTRO, new EMGameProcessIntro ());
+		m_ProcessDic.Add ((int)EMGameProcess.SAMPLE, new EMGameProcessSample ());
+		m_ProcessDic.Add ((int)EMGameProcess.START, new EMGameProcessStart ());
+		m_ProcessDic.Add ((int)EMGameProcess.SIMULATION, new EMGameProcessSimulation ());
+		m_ProcessDic.Add ((int)EMGameProcess.TITLE, new EMGameProcessTitle ());
+		m_ProcessDic.Add ((int)EMGameProcess.INTRO, new EMGameProcessIntro ());
+		m_ProcessDic.Add ((int)EMGameProcess.LOBBY, new EMGameProcessLobby ());
+		m_ProcessDic.Add ((int)EMGameProcess.LOBBY_USER_STATE, new EMGameProcessLobbyUserState ());
+		m_ProcessDic.Add ((int)EMGameProcess.LOBBY_SCHEDULE_INFO, new EMGameProcessLobbyScheduleInfo ());
+		m_ProcessDic.Add ((int)EMGameProcess.LOBBY_SCHEDULE_PLAY, new EMGameProcessLobbySchedulePlay ());
+		m_ProcessDic.Add ((int)EMGameProcess.LOBBY_SCHEDULE_PLAY_EVENT, new EMGameProcessLobbySchedulePlayEvent ());
+		m_ProcessDic.Add ((int)EMGameProcess.HOMESHOPPING, new EMGameProcessHomeShopping ());
+		m_ProcessDic.Add ((int)EMGameProcess.HOMESHOPPING_EVENT, new EMGameProcessHomeShoppingEvent ());
+		m_ProcessDic.Add ((int)EMGameProcess.FINISH, new EMGameProcessFinish ());
 	}
 
 	private void SetSampleProcess ()
 	{
-		ChangeProcess (m_DataMgr.SetProcess(Define.EMGameProcess.SAMPLE));
+		ChangeProcess (EMGameProcess.SAMPLE);
 	}
 
 	private void SetStartProcess ()
 	{
-		ChangeProcess (m_DataMgr.SetProcess(Define.EMGameProcess.START));
+		ChangeProcess (EMGameProcess.START);
 	}
 
-	public void ChangeProcess ( Define.EMGameProcess p_Process )
+	public void ChangeProcess ( EMGameProcess p_Process )
 	{
+		if (Equals (p_Process))
+			return;
+
 		if(m_ProcessDic.ContainsKey((int)p_Process) == false)
 		{
 			Debug.Log (string.Format("[ChangeProcess] this process ({0}) is not found!", p_Process.ToString()));
@@ -77,10 +98,10 @@ public class EMGameManager : Singleton<EMGameManager>
 		}
 		m_CurProcess = m_ProcessDic [(int)m_DataMgr.SetProcess(p_Process)];
 
-		EMUIManager.root.OnResetAll();
-
 		m_CurProcess.OnEnter (m_DataMgr);
 		EMUIManager.root.Show (GetCurProcess());
+
+		EMUIManager.root.OnResetExcept (GetCurProcess());
 	}
 
 	public void OnDestroy ()

@@ -8,6 +8,13 @@ public class EMUIEntity : MonoBehaviour
 	public EMGameProcess m_UIType = EMGameProcess.NULL;
 	public EMGameProcess[] m_IgnoredReset;
 
+	public bool Equals ( EMGameProcess p_ProcessType )
+	{
+		if (m_UIType == p_ProcessType)
+			return true;
+		return false;
+	}
+
 	public int GetUIType ()
 	{
 		return (int)m_UIType;
