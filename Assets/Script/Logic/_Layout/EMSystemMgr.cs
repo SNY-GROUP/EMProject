@@ -45,15 +45,16 @@ public class EMSystem
 		Start ();
 	}
 
-	public void OnUpdate ()
+	public bool OnUpdate ()
 	{
 		if(IsPlay() == false)
-			return;
+			return false;
 
 		if(SingleScheduleProcess(Time.deltaTime))
 		{
 			Next();
 		}
+		return true;
 	}
 
 	private bool SingleScheduleProcess ( float p_DeltaTime )

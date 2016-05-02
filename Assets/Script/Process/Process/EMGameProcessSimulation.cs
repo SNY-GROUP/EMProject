@@ -22,6 +22,7 @@ public class EMGameProcessSimulation : ComFSMEntity<EMDataMgr>
 	{
 		Debug.Log ("[EMGameProcessSimulation] OnEnter");
 
+		EMUIManager.root.OnReset (Define.EMGameProcess.SIMULATION);
 		EMUIManager.root.SetActive (Define.EMGameProcess.SIMULATION, true);
 		EMSchedulerMgr.Instance.StartSimulation ();
 
@@ -30,7 +31,10 @@ public class EMGameProcessSimulation : ComFSMEntity<EMDataMgr>
 
 	public override bool OnProcess (EMDataMgr p_Owner)
 	{
-		EMSystemMgr.Instance.OnUpdate ();
+		if(EMSystemMgr.Instance.OnUpdate () == false)
+		{
+			EMGameManager.Instance.ChangeProcess (Define.EMGameProcess.LOBBY_SCHEDULE_PLAY);
+		}
 
 		return true;
 	}
@@ -39,17 +43,23 @@ public class EMGameProcessSimulation : ComFSMEntity<EMDataMgr>
 	{
 		Debug.Log ("[EMGameProcessSimulation] OnExit");
 
-		EMUIManager.root.OnReset (Define.EMGameProcess.SIMULATION);
+		//EMUIManager.root.OnReset (Define.EMGameProcess.SIMULATION);
 
-		EMUIManager.root.SetActive (Define.EMGameProcess.SIMULATION, false);
+		//EMUIManager.root.SetActive (Define.EMGameProcess.SIMULATION, false);
+
+
+
 		return true;
 	}
 
 	public override void OnGUI (EMDataMgr p_Owner)
 	{
+		/*
 		if(GUI.Button (new Rect(10, 10, 70, 70), "Reset"))
 		{
 			EMGameManager.Instance.ChangeProcess(Define.EMGameProcess.SIMULATION);
 		}
+		*/
 	}
+
 }

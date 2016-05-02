@@ -16,4 +16,9 @@ public class EMDataMgr
 
 		return GetProcess();
 	}
+
+	public bool OnInit ()
+	{
+		return true;
+	}
 }

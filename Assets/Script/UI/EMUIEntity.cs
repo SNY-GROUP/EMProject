@@ -28,7 +28,8 @@ public class EMUIEntity : MonoBehaviour
 	public void SetActive ( bool p_IsActive )
 	{
 		//gameObject.SetActive (p_IsActive);
-		transform.localScale = (p_IsActive) ? Vector3.one : Vector3.zero;
+		//transform.localScale = (p_IsActive) ? Vector3.one : Vector3.zero;
+		transform.localPosition = (p_IsActive) ? Vector3.zero : new Vector3(10000, 0, 0);
 	}
 
 	public void Show ()

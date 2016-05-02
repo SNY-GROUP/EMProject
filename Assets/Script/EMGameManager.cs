@@ -32,6 +32,8 @@ public class EMGameManager : Singleton<EMGameManager>
 	{
 		OnRegister ();
 
+		m_DataMgr.OnInit ();
+
 		foreach(ComFSMEntity<EMDataMgr> fsm in m_ProcessDic.Values)
 		{
 			fsm.OnAwake(m_DataMgr);
